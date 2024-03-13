@@ -5,21 +5,23 @@ import java.net.http.HttpClient;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.geotools.http.HTTPClient;
+import org.geotools.http.HTTPClientFinder;
 import org.geotools.ows.wmts.*;
 import org.geotools.ows.wmts.model.*;
 import org.geotools.ows.wmts.request.*;
 
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
+
 
 public class GeoToolsWmtsTest
 {
 
   public static void main(String[] args) throws Exception
   {
-    HttpClient client = HttpClient.newHttpClient();
+    HTTPClient client = HTTPClientFinder.createClient();
+
     Map<String, String> headers = new HashMap<>();
-    headers.put("apikey", "184ebfa1-17ab-4d4d-b9ff-7808ca122246");
+    headers.put("api-key", "184ebfa1-17ab-4d4d-b9ff-7808ca122246");
 
     URL url = new URI("https://avoin-karttakuva.maanmittauslaitos.fi/avoin/wmts/1.0.0/WMTSCapabilities.xml").toURL();
 
